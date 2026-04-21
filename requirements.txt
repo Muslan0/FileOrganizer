@@ -1,0 +1,46 @@
+# FileOrganizer AI – Zależności
+# =====================================
+# Plik requirements.txt dla projektu C++/Qt
+
+# ── Środowisko budowania ───────────────────────────────────────────────
+# CMake >= 3.16
+# https://cmake.org/download/
+
+# Kompilator C++17:
+#   Windows: MSVC 2019+ (Visual Studio) lub MinGW-w64
+#   Linux:   GCC 11+ lub Clang 13+
+
+# ── Framework Qt ──────────────────────────────────────────────────────
+# Qt 6.x (wymagane moduły: Core, Widgets, Network, Test)
+# https://www.qt.io/download-open-source
+#
+# Moduły Qt:
+#   Qt6::Core       – podstawowe typy, sygnały/sloty, QThread
+#   Qt6::Widgets    – GUI (QMainWindow, QPushButton, QTextEdit, ...)
+#   Qt6::Network    – HTTP (QNetworkAccessManager, QNetworkReply)
+#   Qt6::Test       – testy jednostkowe (QtTest)
+
+# ── Usługa LLM ────────────────────────────────────────────────────────
+# Ollama >= 0.3.0
+# https://ollama.com/download
+#
+# Wymagany co najmniej jeden model, np.:
+#   ollama pull llama3       (zalecany, ~4GB)
+#   ollama pull phi3         (mały, ~2.4GB)
+#   ollama pull mistral      (alternatywa)
+#   ollama pull bielik       (model polski)
+
+# ── Interpreter skryptów ──────────────────────────────────────────────
+# Python 3.8+
+# https://www.python.org/downloads/
+#
+# Wymagane biblioteki standardowe (wbudowane w Python, bez pip):
+#   os, shutil, pathlib, zipfile, datetime, sys, re
+
+# ── Opcjonalne (dokumentacja) ─────────────────────────────────────────
+# Doxygen >= 1.9
+# https://www.doxygen.nl/download.html
+
+# ── System operacyjny ─────────────────────────────────────────────────
+# Windows 10/11 (64-bit) – platforma główna
+# Linux (Ubuntu 22.04+, Fedora 38+) – platforma alternatywna

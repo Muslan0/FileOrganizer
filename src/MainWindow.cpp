@@ -239,12 +239,6 @@ void MainWindow::setupUi()
     m_renamePatternEdit->setPlaceholderText("{date}_{index}_{name}  (tylko dla akcji 'zmień nazwy')");
     paramsGrid->addWidget(m_renamePatternEdit, row++, 1);
 
-    // Dodatkowe instrukcje
-    paramsGrid->addWidget(new QLabel("Uwagi / extra:"), row, 0, Qt::AlignTop);
-    m_extraEdit = new QTextEdit;
-    m_extraEdit->setPlaceholderText("np. Pomin pliki ukryte, Tworz podkatalogi dla kazdego miesiaca...");
-    m_extraEdit->setMaximumHeight(60);
-    paramsGrid->addWidget(m_extraEdit, row++, 1);
 
     topLayout->addWidget(paramsGroup, 3);
 
@@ -489,7 +483,7 @@ OrganizeParams MainWindow::collectParams() const
     OrganizeParams p;
     p.sourceDir   = m_sourceEdit->text().trimmed();
     p.targetDir   = m_targetEdit->text().trimmed();
-    p.extraInstructions = m_extraEdit->toPlainText().trimmed();
+    p.extraInstructions = "";
     p.filterExtensions  = m_filterEdit->text().trimmed();
     p.renamePattern     = m_renamePatternEdit->text().trimmed();
 

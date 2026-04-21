@@ -87,7 +87,7 @@ private:
     QLineEdit*  m_filterEdit;        ///< Filtr rozszerzeń
     QLineEdit*  m_renamePatternEdit; ///< Wzorzec zmiany nazw
     QLineEdit*  m_modelEdit;         ///< Nazwa modelu Ollama
-    QTextEdit*  m_extraEdit;         ///< Dodatkowe instrukcje
+
 
     // ── Sekcja: skrypt ───────────────────────────────────────────────────────
     QTextEdit*  m_scriptEdit;        ///< Podgląd wygenerowanego kodu

@@ -7,6 +7,8 @@
  */
 
 #include <QtTest/QtTest>
+#include <QApplication>
+#include <cstdio>
 #include "PromptBuilder.h"
 
 /**
@@ -135,5 +137,20 @@ private slots:
     }
 };
 
-QTEST_MAIN(TestPromptBuilder)
+// Własny main żeby okno nie zamknęło się od razu po testach
+int main(int argc, char* argv[])
+{
+    QApplication app(argc, argv);
+    TestPromptBuilder tc;
+    int result = QTest::qExec(&tc, argc, argv);
+
+    if (result == 0) {
+        printf("\n=== WSZYSTKIE TESTY PRZESZLY POMYSLNIE ===\n");
+    } else {
+        printf("\n=== NIEKTORE TESTY NIE PRZESZLY ===\n");
+    }
+    printf("Nacisnij Enter aby zamknac...\n");
+    getchar();
+    return result;
+}
 #include "test_PromptBuilder.moc"

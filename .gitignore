@@ -1,0 +1,4 @@
+build/ 
+.qt/ 
+*.user 
+*.exe 

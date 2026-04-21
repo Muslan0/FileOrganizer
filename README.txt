@@ -126,5 +126,8 @@ OBSŁUGA BŁĘDÓW
 
 AUTORZY
 --------
+  Mateusz Muślewski
+  Jan Smulski
+
   Projekt zaliczeniowy – Języki Programowania Obiektowego 2025/2026
 ================================================================================

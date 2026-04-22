@@ -41,15 +41,15 @@ MainWindow::MainWindow(QWidget* parent)
     // Sprawdź dostępność Ollama przy starcie
     QMetaObject::invokeMethod(this, [this]() {
         if (!m_ollamaClient->isServiceAvailable()) {
-            appendConsole("⚠  Ollama nie jest uruchomiona lub niedostępna na localhost:11434.", "#f4c542");
-            appendConsole("   Uruchom: ollama serve", "#f4c542");
+            appendConsole("Ollama nie jest uruchomiona lub niedostępna na localhost:11434.", "#f4c542");
+            appendConsole("Uruchom: ollama serve", "#f4c542");
         } else {
-            appendConsole("✓  Ollama dostępna na localhost:11434", "#4caf50");
+            appendConsole("Ollama dostępna na localhost:11434", "#4caf50");
         }
         if (!ScriptRunner::isPythonAvailable()) {
-            appendConsole("⚠  Python nie znaleziony w PATH. Dodaj Python do zmiennej PATH.", "#f4c542");
+            appendConsole("Python nie znaleziony w PATH. Dodaj Python do zmiennej PATH.", "#f4c542");
         } else {
-            appendConsole("✓  Python dostępny", "#4caf50");
+            appendConsole("Python dostępny", "#4caf50");
         }
     }, Qt::QueuedConnection);
 }
@@ -129,7 +129,7 @@ void MainWindow::setupUi()
             color: #9fc8ff;
             font-size: 13px;
         }
-        QPushButton#generateBtn:hover { background: #2249888; }
+        QPushButton#generateBtn:hover { background: #224988; }
         QPushButton#runBtn {
             background: #1b4a2e;
             border-color: #3da862;
@@ -160,7 +160,7 @@ void MainWindow::setupUi()
     mainLayout->setSpacing(10);
 
     // ── Nagłówek ─────────────────────────────────────────────────────────────
-    QLabel* titleLabel = new QLabel("⚙  FILE ORGANIZER AI", this);
+    QLabel* titleLabel = new QLabel("FILE ORGANIZER AI", this);
     titleLabel->setStyleSheet("font-size: 18px; font-weight: bold; "
                               "color: #8ab4f8; letter-spacing: 3px; "
                               "padding: 4px 0;");
@@ -259,7 +259,7 @@ void MainWindow::setupUi()
     m_generateBtn->setToolTip("Wyślij parametry do modelu LLM i wygeneruj skrypt Python");
     modelLayout->addWidget(m_generateBtn);
 
-    m_runBtn = new QPushButton("⚡  Uruchom skrypt");
+    m_runBtn = new QPushButton("Uruchom skrypt");
     m_runBtn->setObjectName("runBtn");
     m_runBtn->setMinimumHeight(36);
     m_runBtn->setEnabled(false);
@@ -344,7 +344,7 @@ void MainWindow::connectSignals()
     connect(m_scriptRunner, &ScriptRunner::scriptError,    this, &MainWindow::onScriptError);
     connect(m_scriptRunner, &ScriptRunner::outputLine,     this, &MainWindow::onOutputLine);
     connect(m_scriptRunner, &ScriptRunner::scriptStarted,  this, [this]() {
-        appendConsole("\n▶  Skrypt uruchomiony...", "#3d9cf0");
+        appendConsole("\n  Skrypt uruchomiony...", "#3d9cf0");
         setButtonsEnabled(false, false, true);
         m_statusLabel->setText("Skrypt działa...");
     });
@@ -364,7 +364,7 @@ void MainWindow::onGenerateClicked()
     }
 
     m_consoleEdit->clear();
-    appendConsole("⏳  Wysyłam zapytanie do modelu " + m_modelEdit->text().trimmed() + "...", "#8ab4f8");
+    appendConsole("Wysyłam zapytanie do modelu " + m_modelEdit->text().trimmed() + "...", "#8ab4f8");
 
     QString systemPrompt = PromptBuilder::buildSystemPrompt();
     QString userPrompt   = PromptBuilder::buildUserPrompt(params);
@@ -417,11 +417,11 @@ void MainWindow::onBrowseTarget()
 
 void MainWindow::onOllamaResponse(const QString& response)
 {
-    appendConsole("✓  Odpowiedź otrzymana. Wyodrębnianie kodu...", "#4caf50");
+    appendConsole("Odpowiedź otrzymana. Wyodrębnianie kodu...", "#4caf50");
     QString code = PromptBuilder::extractPythonCode(response);
 
     if (code.isEmpty()) {
-        appendConsole("⚠  Nie udało się wyodrębnić kodu Python z odpowiedzi.", "#f4c542");
+        appendConsole("Nie udało się wyodrębnić kodu Python z odpowiedzi.", "#f4c542");
         appendConsole("Surowa odpowiedź:\n" + response, "#888");
         setButtonsEnabled(true, false, false);
         return;
@@ -446,14 +446,14 @@ void MainWindow::onScriptFinished(const QString& output)
         appendConsole("\n── WYNIK ──────────────────────────────", "#3d9cf0");
         appendConsole(output.trimmed());
     }
-    appendConsole("\n✓  Skrypt zakończony pomyślnie.", "#4caf50");
+    appendConsole("\n Skrypt zakończony pomyślnie.", "#4caf50");
     setButtonsEnabled(true, true, false);
     m_statusLabel->setText("Skrypt zakończony");
 }
 
 void MainWindow::onScriptError(const QString& error)
 {
-    appendConsole("\n✗  Skrypt zakończył się z błędem:", "#f08080");
+    appendConsole("\n Skrypt zakończył się z błędem:", "#f08080");
     appendConsole(error, "#f08080");
     setButtonsEnabled(true, true, false);
     m_statusLabel->setText("Błąd skryptu");

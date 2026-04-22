@@ -4,7 +4,6 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QString>
-#include <functional>
 
 /**
  * @file OllamaClient.h

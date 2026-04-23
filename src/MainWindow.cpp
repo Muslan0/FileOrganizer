@@ -214,8 +214,7 @@ void MainWindow::setupUi()
     m_actionCombo = new QComboBox;
     m_actionCombo->addItems({"move – przenieś pliki",
                              "copy – kopiuj pliki",
-                             "rename – zmień nazwy",
-                             "archive – spakuj do ZIP"});
+                             "rename – zmień nazwy"});
     paramsGrid->addWidget(m_actionCombo, row++, 1);
 
     // Sortowanie/grupowanie
